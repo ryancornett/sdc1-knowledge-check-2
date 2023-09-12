@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "sdc1-knowledge-check-2/1.0.0": {
+        "runtime": {
+          "sdc1-knowledge-check-2.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "sdc1-knowledge-check-2/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
