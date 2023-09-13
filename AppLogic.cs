@@ -4,20 +4,24 @@ namespace sdc1_knowledge_check_2
 {
     public class AppLogic
     {
-        public string AddValues(List<AleEightOne> recordList, string answer, AleEightOne obj, string propertyName)
+        private string AssignProperyValue(string answer, PropertyInfo propertyInfo, AleEightOne ale)
         {
-            PropertyInfo propertyInfo = typeof(AleEightOne).GetProperty(propertyName);
-            Console.Write($"Record #{recordList.Count() + 1}: {propertyName}? Enter y/n: ");
-            answer = Console.ReadLine().ToLower();
-
-            if (answer == "y") { propertyInfo.SetValue(obj, true); }
-            else if (answer == "n") { propertyInfo.SetValue(obj, false); }
+            if (answer == "y") { propertyInfo.SetValue(ale, true); }
+            else if (answer == "n") { propertyInfo.SetValue(ale, false); }
             else { Console.WriteLine("Invalid input."); }
             return answer;
         }
+        private string GetPropertyValues(List<AleEightOne> recordList, AleEightOne ale, string propertyName)
+        {
+            PropertyInfo propertyInfo = typeof(AleEightOne).GetProperty(propertyName);
+            Console.Write($"Record #{recordList.Count() + 1}: {propertyName}? Enter y/n: ");
+            string answer = Console.ReadLine().ToLower();
+
+            return AssignProperyValue(answer, propertyInfo, ale);
+        }
         public void GetUserInput(string input, AppLogic app, List<AleEightOne> recordList, AleEightOne myClass, string propertyName)
         {
-            while (input != "y" && input != "n") { input = app.AddValues(recordList, input, myClass, propertyName); }
+            while (input != "y" && input != "n") { input = app.GetPropertyValues(recordList, myClass, propertyName); }
         }
     }
 }
